@@ -1,0 +1,17 @@
+version: 2
+ 
+sources:
+  - name: DBT_PRACTICE
+    description: DBT_PRACTICE db from datalake
+    database:  |
+      {%- if  target.name == "dev" -%} DBT_PRACTICE
+      {%- elif target.name == "qa"  -%} DBT_PRACTICE
+      {%- elif target.name == "uat"  -%} DBT_PRACTICE
+      {%- elif target.name == "prod"  -%} DBT_PRACTICE 
+      {%- else -%} invalid_database
+      {%- endif -%}
+    schema: RAW
+    tables:
+      - name: CUSTOMERS
+        description: Customized purchase order data with line-level details
+ 
