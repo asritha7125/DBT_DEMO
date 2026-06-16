@@ -11,7 +11,7 @@ sources:
         description: Customer master data
 
       - name: PRODUCTS
-        description: Product master data
+        description: Product master data 
 
       - name: ORDERS
         description: Order transaction data

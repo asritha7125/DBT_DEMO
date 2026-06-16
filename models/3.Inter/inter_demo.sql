@@ -3,7 +3,7 @@ select
     o.customer_id,
     c.customer_name,
     c.city,
-    o.product_id,
+    o.product_id, 
     p.product_name,
     p.category,
     o.order_date,
