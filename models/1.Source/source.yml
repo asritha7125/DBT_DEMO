@@ -13,5 +13,10 @@ sources:
     schema: RAW
     tables:
       - name: CUSTOMERS
-        description: Customized purchase order data with line-level details
- 
+        description: Customer master data
+
+      - name: PRODUCTS
+        description: Product master data
+
+      - name: ORDERS
+        description: Order transaction data
