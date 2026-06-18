@@ -9,3 +9,4 @@ where status = 'COMPLETED'
 group by
     customer_id,
     customer_name
+    
