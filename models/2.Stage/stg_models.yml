@@ -1,0 +1,120 @@
+version: 2
+
+models:
+
+  - name: stg_customers
+    description: Cleaned and standardized customer data from the CUSTOMERS source table.
+
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer.
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        description: Customer full name in proper case.
+        tests:
+          - not_null
+
+      - name: city
+        description: Customer city in uppercase format.
+
+      - name: signup_date
+        description: Date when the customer signed up.
+
+  - name: stg_orders
+    description: Cleaned and standardized order transaction data from the ORDERS source table.
+
+    columns:
+      - name: order_id
+        description: Unique identifier for each order.
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Customer who placed the order.
+        tests:
+          - not_null
+
+      - name: product_id
+        description: Product associated with the order.
+        tests:
+          - not_null
+
+      - name: order_date
+        description: Date on which the order was placed.
+
+      - name: quantity
+        description: Quantity of products ordered.
+
+      - name: status
+        description: Order status standardized to uppercase values.
+
+  - name: stg_products
+    description: Cleaned and standardized product master data from the PRODUCTS source table.
+
+    columns:
+      - name: product_id
+        description: Unique identifier for each product.
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        description: Product name in proper case.
+        tests:
+          - not_null
+
+      - name: category
+        description: Product category in uppercase format.
+
+      - name: price
+        description: Product price stored as NUMBER(10,2).
+
+  - name: inter_demo
+    description: Intermediate model joining customers, orders, and products with calculated order amount.
+
+    columns:
+      - name: order_id
+        description: Unique order identifier.
+
+      - name: customer_id
+        description: Customer identifier.
+
+      - name: customer_name
+        description: Customer full name.
+
+      - name: product_id
+        description: Product identifier.
+
+      - name: product_name
+        description: Product name.
+
+      - name: order_amount
+        description: Calculated as quantity multiplied by price.
+
+      - name: status
+        description: Order status.
+
+  - name: demo
+    description: Final mart containing customer sales summary metrics.
+
+    columns:
+      - name: customer_id
+        description: Unique customer identifier.
+        tests:
+          - not_null
+
+      - name: customer_name
+        description: Customer full name.
+
+      - name: total_orders
+        description: Number of completed orders placed by the customer.
+
+      - name: total_sales
+        description: Total sales amount from completed orders.
+
+      - name: avg_order_value
+        description: Average value of completed orders.
