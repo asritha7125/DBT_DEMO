@@ -15,3 +15,6 @@ sources:
 
       - name: ORDERS
         description: Order transaction data
+      
+      - name: SOURCE_MEMBER
+        description: Source member table for SCD1 and SCD2 implementation

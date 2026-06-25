@@ -8,7 +8,6 @@
       check_cols=['city']
     )
 }}
-
 select
     customer_id,
     customer_name,
